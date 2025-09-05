@@ -43,3 +43,6 @@ export * from './TaskManager';
 
 // Modal Compound Component
 export { default as Modal } from './Modal/Modal';
+
+// Error Handling Components
+export { default as ErrorBoundary } from './ErrorBoundary';

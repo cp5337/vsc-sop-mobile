@@ -34,6 +34,7 @@ import {
   LogViewer
 } from './components';
 import IncidentReport from './components/IncidentReport';
+import ErrorBoundary from './components/ErrorBoundary';
 
 // Data imports provide static configuration and emergency information
 import { posts, emergencyContacts, emergencyCodes } from './data/constants';
@@ -195,13 +196,14 @@ const App = () => {
 
   // Main render function returns application layout with header, navigation, and content
   return (
-    <div className="min-h-screen bg-gray-900 text-white">
-      {/* Header component displays application title, profile avatar, and menu toggle button */}
-      <Header 
-        menuOpen={menuOpen} 
-        setMenuOpen={setMenuOpen} 
-        onProfileClick={() => setShowUserProfile(true)}
-      />
+    <ErrorBoundary>
+      <div className="min-h-screen bg-gray-900 text-white">
+        {/* Header component displays application title, profile avatar, and menu toggle button */}
+        <Header 
+          menuOpen={menuOpen} 
+          setMenuOpen={setMenuOpen} 
+          onProfileClick={() => setShowUserProfile(true)}
+        />
       
       {/* Navigation component displays sidebar menu when menu state is open */}
       {menuOpen && (
@@ -312,6 +314,7 @@ const App = () => {
         />
       )}
     </div>
+    </ErrorBoundary>
   );
 };
 
