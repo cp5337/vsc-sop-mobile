@@ -4,6 +4,7 @@ import { Shield, User, AlertCircle, Phone, CheckCircle } from 'lucide-react';
 const Navigation = ({ activeSection, setActiveSection, setMenuOpen }) => {
   const menuItems = [
     { id: 'overview', label: 'Overview', icon: Shield },
+    { id: 'checklist', label: 'Daily Checklist', icon: CheckCircle },
     { id: 'posts', label: 'Post Orders', icon: User },
     { id: 'emergency', label: 'Emergency', icon: AlertCircle },
     { id: 'contacts', label: 'Contacts', icon: Phone },

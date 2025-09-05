@@ -49,4 +49,28 @@ const PostOrders = ({ posts, acknowledgedPosts, onAcknowledge }) => {
               </div>
               <div className="flex items-center space-x-2">
                 {acknowledgedPosts.includes(post.id) && (
-                  <CheckCircle
+                  <CheckCircle className="w-5 h-5 text-green-500" />
+                )}
+                <ChevronRight className="w-5 h-5 text-gray-400" />
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
+
+      {selectedPost && (
+        <PostDetailModal 
+          post={selectedPost} 
+          isAcknowledged={acknowledgedPosts.includes(selectedPost.id)}
+          onClose={() => setSelectedPost(null)}
+          onAcknowledge={() => {
+            onAcknowledge(selectedPost.id);
+            setSelectedPost(null);
+          }}
+        />
+      )}
+    </>
+  );
+};
+
+export default PostOrders;

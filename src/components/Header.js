@@ -1,23 +1,44 @@
-import React from 'react';
-import { Shield, Menu, X } from 'lucide-react';
+/**
+ * Application Header Component
+ * Written by: Charlie Payne @cp5337
+ * Date: 2025-01-27
+ * 
+ * Header component displays application branding and navigation controls
+ * 30% LOC will be implemented for further development
+ */
 
-const Header = ({ menuOpen, setMenuOpen }) => {
+import React from 'react';
+import { Menu, X } from 'lucide-react';
+import WTCLogo from './WTCLogo';
+import { ProfileAvatar } from './UserProfile';
+
+const Header = ({ menuOpen, setMenuOpen, onProfileClick }) => {
   return (
-    <header className="bg-gray-800 border-b border-gray-700 sticky top-0 z-50">
+    <header className="bg-gradient-to-r from-blue-900 to-blue-800 border-b border-blue-700 sticky top-0 z-50">
       <div className="flex items-center justify-between p-4">
         <div className="flex items-center space-x-3">
-          <Shield className="w-8 h-8 text-blue-400" />
+          <WTCLogo size="small" showTagline={false} />
           <div>
-            <h1 className="text-xl font-bold">VSC SOP</h1>
-            <p className="text-xs text-gray-400">v2.0</p>
+            <h1 className="text-xl font-bold text-white">VSC SOP</h1>
+            <p className="text-xs text-blue-200">v2.0</p>
           </div>
         </div>
-        <button
-          onClick={() => setMenuOpen(!menuOpen)}
-          className="p-2 hover:bg-gray-700 rounded-lg transition-colors"
-        >
-          {menuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
-        </button>
+        <div className="flex items-center space-x-3">
+          {/* Profile avatar displays user selfie or initials with click handler */}
+          <ProfileAvatar
+            profile={JSON.parse(localStorage.getItem('userProfile') || '{}')}
+            onClick={onProfileClick}
+            size="default"
+          />
+          
+          {/* Menu toggle button controls navigation visibility */}
+          <button
+            onClick={() => setMenuOpen(!menuOpen)}
+            className="p-2 hover:bg-gray-700 rounded-lg transition-colors"
+          >
+            {menuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+          </button>
+        </div>
       </div>
     </header>
   );
