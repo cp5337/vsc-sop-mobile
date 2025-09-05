@@ -1,7 +1,16 @@
+/**
+ * Navigation Component
+ * Written by: Charlie Payne @cp5337
+ * Date: 2025-01-27
+ * 
+ * Side navigation menu component with icon-based menu items and active state management
+ * Provides mobile-optimized navigation with overlay backdrop
+ */
 import React from 'react';
 import { Shield, User, AlertCircle, Phone, CheckCircle } from 'lucide-react';
 
 const Navigation = ({ activeSection, setActiveSection, setMenuOpen }) => {
+  // Menu items configuration with icons and navigation targets
   const menuItems = [
     { id: 'overview', label: 'Overview', icon: Shield },
     { id: 'checklist', label: 'Daily Checklist', icon: CheckCircle },

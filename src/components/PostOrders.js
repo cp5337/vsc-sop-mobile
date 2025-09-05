@@ -1,5 +1,12 @@
+/**
+ * Post Orders Component
+ * Written by: Charlie Payne @cp5337
+ * Date: 2025-01-27
+ * 
+ * Post orders management component with search functionality and detailed post information
+ * Provides post selection, acknowledgment tracking, and detailed modal views
+ */
 import React, { useState } from 'react';
-
 import { Search, MapPin, Clock, CheckCircle, ChevronRight } from 'lucide-react';
 import PostDetailModal from './PostDetailModal';
 

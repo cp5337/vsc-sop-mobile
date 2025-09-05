@@ -1,3 +1,11 @@
+/**
+ * QR Code Generator Component
+ * Written by: Charlie Payne @cp5337
+ * Date: 2025-01-27
+ * 
+ * QR code generation component for creating post-specific QR codes and task distribution
+ * Implements QR code generation with post selection and copy-to-clipboard functionality
+ */
 import React, { useState } from 'react';
 import { QrCode, Printer, Copy, CheckCircle, X } from 'lucide-react';
 

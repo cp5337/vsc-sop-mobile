@@ -1,5 +1,12 @@
+/**
+ * Post Detail Modal Component
+ * Written by: Charlie Payne @cp5337
+ * Date: 2025-01-27
+ * 
+ * Modal component displaying detailed post information including responsibilities, equipment, and procedures
+ * Provides acknowledgment functionality for post order compliance
+ */
 import React from 'react';
-
 import { X } from 'lucide-react';
 import { getPostDetails } from '../data/constants';
 

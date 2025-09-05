@@ -1,5 +1,12 @@
+/**
+ * Acknowledgment Component
+ * Written by: Charlie Payne @cp5337
+ * Date: 2025-01-27
+ * 
+ * Post order acknowledgment system for compliance tracking and QR code generation
+ * Manages acknowledgment state and generates compliance verification codes
+ */
 import React, { useState } from 'react';
-
 import { CheckCircle, QrCode } from 'lucide-react';
 import QRModal from './QRModal';
 

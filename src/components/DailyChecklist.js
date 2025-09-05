@@ -1,7 +1,16 @@
+/**
+ * Daily Checklist Component
+ * Written by: Charlie Payne @cp5337
+ * Date: 2025-01-27
+ * 
+ * Comprehensive daily checklist system for security equipment, procedures, and facility inspections
+ * Implements localStorage persistence and critical task prioritization
+ */
 import React, { useState, useEffect } from 'react';
 import { CheckCircle, Circle, Clock, AlertTriangle, Save, RotateCcw, ArrowLeft } from 'lucide-react';
 
 const DailyChecklist = ({ onBack }) => {
+  // Checklist state manages equipment, security, and facility inspection tasks
   const [checklist, setChecklist] = useState({
     equipment: [
       { id: 'radio', task: 'Radio communication test', completed: false, critical: true },
@@ -26,8 +35,10 @@ const DailyChecklist = ({ onBack }) => {
     ]
   });
 
+  // Last saved timestamp tracks when checklist was last persisted to localStorage
   const [lastSaved, setLastSaved] = useState(null);
 
+  // Load saved checklist data from localStorage on component mount
   useEffect(() => {
     const saved = localStorage.getItem('dailyChecklist');
     if (saved) {
@@ -35,6 +46,7 @@ const DailyChecklist = ({ onBack }) => {
     }
   }, []);
 
+  // Toggle task completion status and update checklist state
   const toggleTask = (category, taskId) => {
     setChecklist(prev => ({
       ...prev,
@@ -44,11 +56,13 @@ const DailyChecklist = ({ onBack }) => {
     }));
   };
 
+  // Save current checklist state to localStorage with timestamp
   const saveChecklist = () => {
     localStorage.setItem('dailyChecklist', JSON.stringify(checklist));
     setLastSaved(new Date());
   };
 
+  // Reset all checklist items to incomplete status
   const resetChecklist = () => {
     const resetChecklist = {
       equipment: checklist.equipment.map(task => ({ ...task, completed: false })),

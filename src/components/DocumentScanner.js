@@ -1,3 +1,11 @@
+/**
+ * Document Scanner Component
+ * Written by: Charlie Payne @cp5337
+ * Date: 2025-01-27
+ * 
+ * Advanced document scanning component with type classification and storage management
+ * Implements camera capture, document type selection, and localStorage persistence
+ */
 import React, { useState, useRef, useEffect } from 'react';
 import { Camera, X, RotateCcw, Check, AlertCircle, FileText, Download, Trash2 } from 'lucide-react';
 

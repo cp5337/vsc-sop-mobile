@@ -1,3 +1,11 @@
+/**
+ * QR Scanner Component
+ * Written by: Charlie Payne @cp5337
+ * Date: 2025-01-27
+ * 
+ * Real-time QR code scanning component with camera integration and automatic detection
+ * Implements continuous scanning with error handling and manual scan trigger functionality
+ */
 import React, { useState, useRef, useEffect } from 'react';
 import { QrCode, X, AlertCircle } from 'lucide-react';
 

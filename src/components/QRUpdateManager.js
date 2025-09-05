@@ -1,3 +1,11 @@
+/**
+ * QR Update Manager Component
+ * Written by: Charlie Payne @cp5337
+ * Date: 2025-01-27
+ * 
+ * QR code-based data distribution system for updating app content across devices
+ * Implements QR code generation, data serialization, and update distribution
+ */
 import React, { useState } from 'react';
 import { QrCode, Upload, Smartphone, MessageSquare, X } from 'lucide-react';
 

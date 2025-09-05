@@ -1,3 +1,11 @@
+/**
+ * Allied Universal Logo Component
+ * Written by: Charlie Payne @cp5337
+ * Date: 2025-01-27
+ * 
+ * Reusable logo component for Allied Universal Security branding
+ * Provides consistent branding with customizable size and tagline options
+ */
 import React from 'react';
 import { Shield } from 'lucide-react';
 

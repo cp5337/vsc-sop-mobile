@@ -1,3 +1,11 @@
+/**
+ * Contacts Component
+ * Written by: Charlie Payne @cp5337
+ * Date: 2025-01-27
+ * 
+ * Contact management component providing quick access to emergency and operational contacts
+ * Implements native phone dialing functionality for mobile devices
+ */
 import React from 'react';
 import { Phone, ArrowLeft } from 'lucide-react';
 

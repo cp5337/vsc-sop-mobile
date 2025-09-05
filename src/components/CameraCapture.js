@@ -1,14 +1,29 @@
+/**
+ * Camera Capture Component
+ * Written by: Charlie Payne @cp5337
+ * Date: 2025-01-27
+ * 
+ * Advanced camera capture component with front/back camera switching and photo management
+ * Implements getUserMedia API for native camera access with error handling and retry functionality
+ */
 import React, { useState, useRef, useEffect } from 'react';
 import { Camera, X, RotateCcw, Check, AlertCircle } from 'lucide-react';
 
 const CameraCapture = ({ onCapture, onClose, mode = 'photo' }) => {
+  // Camera stream state manages active video stream from device camera
   const [stream, setStream] = useState(null);
+  // Captured image state stores base64 encoded image data
   const [capturedImage, setCapturedImage] = useState(null);
+  // Error state handles camera access and operation errors
   const [error, setError] = useState(null);
-  const [facingMode, setFacingMode] = useState('environment'); // 'user' for front, 'environment' for back
+  // Facing mode controls front ('user') or back ('environment') camera selection
+  const [facingMode, setFacingMode] = useState('environment');
+  // Video element reference for camera stream display
   const videoRef = useRef(null);
+  // Canvas element reference for image capture and processing
   const canvasRef = useRef(null);
 
+  // Initialize camera on component mount and cleanup on unmount or facing mode change
   useEffect(() => {
     startCamera();
     return () => {
@@ -18,6 +33,7 @@ const CameraCapture = ({ onCapture, onClose, mode = 'photo' }) => {
     };
   }, [facingMode]);
 
+  // Start camera stream with getUserMedia API and error handling
   const startCamera = async () => {
     try {
       setError(null);
@@ -39,6 +55,7 @@ const CameraCapture = ({ onCapture, onClose, mode = 'photo' }) => {
     }
   };
 
+  // Capture photo from video stream and convert to base64 image data
   const capturePhoto = () => {
     if (videoRef.current && canvasRef.current) {
       const canvas = canvasRef.current;
@@ -61,11 +78,13 @@ const CameraCapture = ({ onCapture, onClose, mode = 'photo' }) => {
     }
   };
 
+  // Reset captured image and restart camera for retake functionality
   const retakePhoto = () => {
     setCapturedImage(null);
     startCamera();
   };
 
+  // Confirm photo capture and pass image data to parent component
   const confirmCapture = () => {
     if (capturedImage && onCapture) {
       onCapture(capturedImage);
@@ -73,6 +92,7 @@ const CameraCapture = ({ onCapture, onClose, mode = 'photo' }) => {
     onClose();
   };
 
+  // Switch between front and back camera by toggling facing mode
   const switchCamera = () => {
     setFacingMode(prev => prev === 'user' ? 'environment' : 'user');
   };

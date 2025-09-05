@@ -1,3 +1,11 @@
+/**
+ * Emergency Component
+ * Written by: Charlie Payne @cp5337
+ * Date: 2025-01-27
+ * 
+ * Emergency procedures and codes display component for critical security operations
+ * Provides quick access to emergency protocols and communication procedures
+ */
 import React from 'react';
 import { Radio, ArrowLeft } from 'lucide-react';
 

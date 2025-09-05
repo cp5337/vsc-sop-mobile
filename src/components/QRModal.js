@@ -1,3 +1,11 @@
+/**
+ * QR Modal Component
+ * Written by: Charlie Payne @cp5337
+ * Date: 2025-01-27
+ * 
+ * Modal component for displaying generated QR codes with download functionality
+ * Implements QR code rendering using qrcode library with customizable styling
+ */
 import React, { useEffect, useRef } from 'react';
 import { X, Download } from 'lucide-react';
 import QRCode from 'qrcode';
