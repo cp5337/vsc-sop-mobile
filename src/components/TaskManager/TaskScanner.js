@@ -6,11 +6,11 @@
  * Task scanner component for personnel to scan QR codes and complete tasks
  * 30% LOC will be implemented for further development
  */
-
 import React, { useState, useEffect } from 'react';
-import { QrCode, CheckCircle, Clock, User, AlertCircle, Camera, FileText } from 'lucide-react';
+
+import { QrCode, Camera, X, MapPin, Clock } from 'lucide-react';
 import { ProfileAvatar } from '../UserProfile';
-import { createLogEntry, getLogSummary } from '../../utils/hashUtils';
+import { createLogEntry } from '../../utils/hashUtils';
 
 const TaskScanner = ({ onClose }) => {
   // State management for task scanning and completion

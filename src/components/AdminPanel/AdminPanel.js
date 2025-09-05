@@ -6,8 +6,8 @@
  * Main admin panel component coordinates data management and tab navigation
  * 30% LOC will be implemented for further development
  */
-
 import React, { useState, useEffect } from 'react';
+
 import { Settings, X } from 'lucide-react';
 import PostsTab from './PostsTab';
 import ContactsTab from './ContactsTab';

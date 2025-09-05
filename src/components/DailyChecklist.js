@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
-import { CheckCircle, Circle, Clock, AlertTriangle, Save, RotateCcw } from 'lucide-react';
+import { CheckCircle, Circle, Clock, AlertTriangle, Save, RotateCcw, ArrowLeft } from 'lucide-react';
 
-const DailyChecklist = () => {
+const DailyChecklist = ({ onBack }) => {
   const [checklist, setChecklist] = useState({
     equipment: [
       { id: 'radio', task: 'Radio communication test', completed: false, critical: true },
@@ -123,7 +123,18 @@ const DailyChecklist = () => {
       {/* Progress Header */}
       <div className="bg-gray-800 p-4 rounded-xl border border-gray-600 text-white">
         <div className="flex items-center justify-between mb-2">
-          <h2 className="text-xl font-bold">Daily Checklist</h2>
+          <div className="flex items-center space-x-3">
+            {onBack && (
+              <button
+                onClick={onBack}
+                className="p-2 hover:bg-gray-700 rounded-lg transition-colors"
+                title="Back to Overview"
+              >
+                <ArrowLeft className="w-5 h-5" />
+              </button>
+            )}
+            <h2 className="text-xl font-bold">Daily Checklist</h2>
+          </div>
           <div className="text-right">
             <div className="text-2xl font-bold">{stats.completed}/{stats.total}</div>
             <div className="text-sm text-gray-300">Tasks Complete</div>

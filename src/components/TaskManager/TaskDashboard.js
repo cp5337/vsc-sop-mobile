@@ -8,8 +8,8 @@
  */
 
 import React, { useState, useEffect } from 'react';
-import { CheckCircle, Clock, AlertCircle, User, Calendar, Download, Filter, Search } from 'lucide-react';
-import { validateLogEntry, getLogSummary } from '../../utils/hashUtils';
+import { CheckCircle, Clock, User, Calendar, Download, Search, X } from 'lucide-react';
+// import { validateLogEntry, getLogSummary } from '../../utils/hashUtils';
 
 const TaskDashboard = ({ onClose }) => {
   // State management for tasks and completion logs

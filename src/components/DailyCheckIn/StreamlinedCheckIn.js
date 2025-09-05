@@ -6,9 +6,9 @@
  * Streamlined check-in component with post acknowledgment and immutable logging
  * 30% LOC will be implemented for further development
  */
-
 import React, { useState, useEffect } from 'react';
-import { CheckCircle, Clock, User, FileText, Hash, Calendar } from 'lucide-react';
+
+import { CheckCircle, FileText, Hash, X } from 'lucide-react';
 import { ProfileAvatar } from '../UserProfile';
 import { createCheckInLog, createAcknowledgmentLog, getLogSummary } from '../../utils/hashUtils';
 import { posts } from '../../data/constants';

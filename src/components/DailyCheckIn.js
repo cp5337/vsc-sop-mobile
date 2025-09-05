@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { QrCode, CheckCircle, Clock, MapPin, User, Calendar, AlertCircle, RefreshCw, X } from 'lucide-react';
+import { QrCode, CheckCircle, Clock, MapPin, Calendar, RefreshCw, X } from 'lucide-react';
 
 const DailyCheckIn = ({ onClose }) => {
   const [checkIns, setCheckIns] = useState([]);

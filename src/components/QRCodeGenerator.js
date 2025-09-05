@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { QrCode, Download, Printer, Copy, CheckCircle, X } from 'lucide-react';
+import { QrCode, Printer, Copy, CheckCircle, X } from 'lucide-react';
 
 const QRCodeGenerator = ({ onClose }) => {
   const [selectedPost, setSelectedPost] = useState('');

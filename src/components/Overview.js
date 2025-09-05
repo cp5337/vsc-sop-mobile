@@ -6,49 +6,101 @@
  * Main dashboard component displays VSC status, quick actions, and executive team
  * 30% LOC will be implemented for further development
  */
-
 import React, { useState } from 'react';
-import { Shield, AlertCircle, Users, Clock, MapPin, CheckCircle, Phone, Radio, Camera, QrCode, FileText, ChevronDown, ChevronUp, Settings, RefreshCw, Calendar, Plus, Hash, ClipboardList, Scan, BarChart3 } from 'lucide-react';
+
+import { Shield, AlertCircle, Users, Clock, MapPin, CheckCircle, Phone, FileWarning, Camera, QrCode, FileText, ChevronDown, ChevronUp, Settings, RefreshCw, Calendar, Plus, Hash, ClipboardList, Scan, BarChart3, Activity, Cloud, Sun, CloudRain, CloudSnow, Wind } from 'lucide-react';
 import WTCLogo from './WTCLogo';
 
 const Overview = ({ onQuickAction }) => {
   const [currentTime, setCurrentTime] = useState(new Date());
   const [showExecutives, setShowExecutives] = useState(false);
+  const [weather, setWeather] = useState(null);
 
   React.useEffect(() => {
     const timer = setInterval(() => setCurrentTime(new Date()), 1000);
     return () => clearInterval(timer);
   }, []);
 
+  // Weather fetching function gets current weather conditions
+  React.useEffect(() => {
+    const fetchWeather = async () => {
+      try {
+        const apiKey = process.env.REACT_APP_OPENWEATHER_API_KEY;
+        
+        // Try NYC weather first as a simple test
+        const response = await fetch(
+          `https://api.openweathermap.org/data/2.5/weather?q=New York&appid=${apiKey}&units=imperial`
+        );
+        
+        if (response.ok) {
+          const data = await response.json();
+          setWeather({
+            temp: Math.round(data.main.temp),
+            condition: data.weather[0].main,
+            description: data.weather[0].description
+          });
+        } else {
+          // Fallback to mock data if API fails
+          setWeather({
+            temp: 72,
+            condition: 'Clear',
+            description: 'clear sky'
+          });
+        }
+      } catch (error) {
+        // Fallback to mock data if API fails
+        setWeather({
+          temp: 72,
+          condition: 'Clear',
+          description: 'clear sky'
+        });
+      }
+    };
+
+    fetchWeather();
+  }, []);
+
+  // Weather icon function returns appropriate icon based on weather condition
+  const getWeatherIcon = (condition) => {
+    const conditionLower = condition?.toLowerCase();
+    if (conditionLower?.includes('clear') || conditionLower?.includes('sun')) {
+      return <Sun className="w-4 h-4 text-yellow-400" />;
+    } else if (conditionLower?.includes('rain') || conditionLower?.includes('drizzle')) {
+      return <CloudRain className="w-4 h-4 text-blue-400" />;
+    } else if (conditionLower?.includes('snow')) {
+      return <CloudSnow className="w-4 h-4 text-blue-200" />;
+    } else if (conditionLower?.includes('wind')) {
+      return <Wind className="w-4 h-4 text-gray-400" />;
+    } else {
+      return <Cloud className="w-4 h-4 text-gray-400" />;
+    }
+  };
+
   const quickActions = [
-    { icon: Phone, label: 'Emergency', color: 'bg-red-600 hover:bg-red-700', action: 'emergency' },
-    { icon: Radio, label: 'Radio Check', color: 'bg-blue-600 hover:bg-blue-700', action: 'radio' },
-    { icon: CheckCircle, label: 'Daily Checklist', color: 'bg-green-600 hover:bg-green-700', action: 'checklist' },
-    { icon: Shield, label: 'Post Orders', color: 'bg-blue-600 hover:bg-blue-700', action: 'posts' },
-    { icon: Camera, label: 'Take Photo', color: 'bg-gray-600 hover:bg-gray-700', action: 'camera' },
-    { icon: QrCode, label: 'Scan QR', color: 'bg-gray-600 hover:bg-gray-700', action: 'qr' },
-    { icon: FileText, label: 'Scan Document', color: 'bg-gray-600 hover:bg-gray-700', action: 'document' },
-    { icon: Settings, label: 'Admin Panel', color: 'bg-purple-600 hover:bg-purple-700', action: 'admin' },
-    { icon: RefreshCw, label: 'QR Updates', color: 'bg-orange-600 hover:bg-orange-700', action: 'qr-updates' },
-    { icon: Calendar, label: 'Daily Check-In', color: 'bg-green-600 hover:bg-green-700', action: 'daily-checkin' },
-    { icon: Hash, label: 'View Logs', color: 'bg-teal-600 hover:bg-teal-700', action: 'view-logs' },
-    { icon: ClipboardList, label: 'Task Manager', color: 'bg-purple-600 hover:bg-purple-700', action: 'task-manager' },
-    { icon: Scan, label: 'Scan Task', color: 'bg-orange-600 hover:bg-orange-700', action: 'task-scanner' },
-    { icon: BarChart3, label: 'Task Dashboard', color: 'bg-cyan-600 hover:bg-cyan-700', action: 'task-dashboard' },
-    { icon: Plus, label: 'Generate QR', color: 'bg-indigo-600 hover:bg-indigo-700', action: 'qr-generator' }
+    { icon: Phone, label: 'Emergency', color: 'bg-red-800 hover:bg-red-900', action: 'emergency' },
+    { icon: FileWarning, label: 'Incident Report', color: 'bg-slate-700 hover:bg-slate-800', action: 'incident-report' },
+    { icon: CheckCircle, label: 'Daily Checklist', color: 'bg-slate-700 hover:bg-slate-800', action: 'checklist' },
+    { icon: Shield, label: 'Post Orders', color: 'bg-slate-700 hover:bg-slate-800', action: 'posts' },
+    { icon: Camera, label: 'Take Photo', color: 'bg-slate-600 hover:bg-slate-700', action: 'camera' },
+    { icon: QrCode, label: 'Scan QR', color: 'bg-slate-600 hover:bg-slate-700', action: 'qr' },
+    { icon: FileText, label: 'Scan Document', color: 'bg-slate-600 hover:bg-slate-700', action: 'document' },
+    { icon: Settings, label: 'Admin Panel', color: 'bg-slate-600 hover:bg-slate-700', action: 'admin' },
+    { icon: RefreshCw, label: 'QR Updates', color: 'bg-slate-600 hover:bg-slate-700', action: 'qr-updates' },
+    { icon: Calendar, label: 'Daily Check-In', color: 'bg-slate-600 hover:bg-slate-700', action: 'daily-checkin' },
+    { icon: Hash, label: 'View Logs', color: 'bg-slate-600 hover:bg-slate-700', action: 'view-logs' },
+    { icon: ClipboardList, label: 'Task Manager', color: 'bg-slate-600 hover:bg-slate-700', action: 'task-manager' },
+    { icon: Scan, label: 'Scan Task', color: 'bg-slate-600 hover:bg-slate-700', action: 'task-scanner' },
+    { icon: BarChart3, label: 'Task Dashboard', color: 'bg-slate-600 hover:bg-slate-700', action: 'task-dashboard' },
+    { icon: Plus, label: 'Generate QR', color: 'bg-slate-600 hover:bg-slate-700', action: 'qr-generator' }
   ];
 
   return (
     <div className="space-y-4">
       {/* Header with WTC/PANYNJ branding */}
-      <div className="bg-gradient-to-r from-blue-900 to-blue-800 p-6 rounded-xl border border-blue-700">
+      <div className="bg-gradient-to-r from-slate-800 to-slate-700 p-6 rounded-xl border border-slate-600">
         <div className="flex items-center justify-between mb-4">
           <div>
             <WTCLogo size="default" showTagline={true} />
-            <div className="text-white mt-2">
-              <p className="font-semibold">Vehicle Security Center</p>
-              <p className="text-blue-200 text-sm">Allied Universal Security</p>
-            </div>
           </div>
           <div className="text-right">
             <div className="text-2xl font-mono font-bold text-white">
@@ -57,17 +109,23 @@ const Overview = ({ onQuickAction }) => {
             <div className="text-sm text-blue-200">
               {currentTime.toLocaleDateString()}
             </div>
+            <div className="text-xs text-slate-400 mt-1">
+              v1.8
+            </div>
+            {/* Weather display shows current temperature and condition */}
+            {weather && (
+              <div className="flex items-center justify-end mt-2 text-white">
+                {getWeatherIcon(weather.condition)}
+                <span className="ml-1 text-sm font-medium">{weather.temp}°F</span>
+              </div>
+            )}
           </div>
         </div>
         
-        <div className="grid grid-cols-2 gap-4 text-sm">
+        <div className="grid grid-cols-1 gap-4 text-sm">
           <div className="flex items-center text-white">
             <MapPin className="w-4 h-4 mr-2 text-blue-200" />
             <span>140 Liberty St.</span>
-          </div>
-          <div className="flex items-center text-white">
-            <Shield className="w-4 h-4 mr-2 text-blue-200" />
-            <span>SOP v2.0</span>
           </div>
         </div>
       </div>
@@ -99,7 +157,7 @@ const Overview = ({ onQuickAction }) => {
           </div>
           <div className="flex items-center justify-between p-3 bg-blue-700 border border-blue-400 rounded-lg">
             <span className="text-white font-medium">24/7 Operations Active</span>
-            <Radio className="w-5 h-5 text-blue-200" />
+            <Activity className="w-5 h-5 text-blue-200" />
           </div>
         </div>
       </div>
@@ -129,13 +187,13 @@ const Overview = ({ onQuickAction }) => {
                     <img 
                       src={`/images/executives/exec-${num}.jpg`} 
                       alt={`Executive ${num}`} 
-                      className="w-full h-24 object-cover rounded-lg mb-2"
+                      className="w-full h-32 object-cover rounded-lg mb-2"
                       onError={(e) => {
                         e.target.style.display = 'none';
                         e.target.nextSibling.style.display = 'flex';
                       }}
                     />
-                    <div className="w-full h-24 bg-gray-800 rounded-lg mb-2 flex items-center justify-center hidden">
+                    <div className="w-full h-32 bg-gray-800 rounded-lg mb-2 flex items-center justify-center hidden">
                       <div className="text-center">
                         <div className="text-xl mb-1">👤</div>
                         <span className="text-gray-400 text-xs">Executive {num}</span>
@@ -149,8 +207,8 @@ const Overview = ({ onQuickAction }) => {
             
             <div className="bg-gray-700 rounded-lg p-4 border border-gray-600">
               <div className="flex items-center space-x-4">
-                <div className="w-16 h-20 bg-gray-800 rounded-lg flex items-center justify-center">
-                  <span className="text-gray-500 text-xs">PM</span>
+                <div className="w-20 h-24 bg-gray-800 rounded-lg flex items-center justify-center">
+                  <span className="text-gray-500 text-sm font-bold">PM</span>
                 </div>
                 <div>
                   <p className="font-semibold text-white">Oronde "Ron" Ward</p>

@@ -21,7 +21,7 @@ const AlliedUniversalLogo = ({ size = 'default', showTagline = true, className =
       <Shield className={`${sizeClasses[size]} text-white mr-3`} />
       <div>
         <div className={`font-bold text-white ${textSizes[size]}`}>
-          Allied Universal
+          Security Operations
         </div>
         {showTagline && (
           <div className="text-blue-200 text-xs">

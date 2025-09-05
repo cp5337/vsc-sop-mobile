@@ -1,5 +1,5 @@
 import React, { useState, useRef, useEffect } from 'react';
-import { QrCode, X, AlertCircle, CheckCircle } from 'lucide-react';
+import { QrCode, X, AlertCircle } from 'lucide-react';
 
 const QRScanner = ({ onScan, onClose }) => {
   const [stream, setStream] = useState(null);

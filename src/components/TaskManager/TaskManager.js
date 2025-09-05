@@ -8,8 +8,8 @@
  */
 
 import React, { useState, useEffect } from 'react';
-import { Plus, Edit, Trash2, QrCode, Calendar, User, CheckCircle, Clock, AlertCircle } from 'lucide-react';
-import { createLogEntry, getLogSummary } from '../../utils/hashUtils';
+import { Plus, Edit, Trash2, QrCode, Calendar, User, CheckCircle, X, MapPin } from 'lucide-react';
+// // import { createLogEntry } from '../../utils/hashUtils';
 
 const TaskManager = ({ onClose }) => {
   // State management for tasks and UI

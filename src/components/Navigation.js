@@ -13,7 +13,7 @@ const Navigation = ({ activeSection, setActiveSection, setMenuOpen }) => {
 
   return (
     <div className="fixed inset-0 bg-black/50 z-40" onClick={() => setMenuOpen(false)}>
-      <div className="fixed right-0 top-0 h-full w-64 bg-gray-800 border-l border-gray-700 p-4 pt-20">
+      <div className="fixed right-0 top-0 h-full w-64 bg-slate-800 border-l border-slate-600 p-4 pt-20">
         {menuItems.map((item) => (
           <button
             key={item.id}
@@ -22,7 +22,7 @@ const Navigation = ({ activeSection, setActiveSection, setMenuOpen }) => {
               setMenuOpen(false);
             }}
             className={`w-full flex items-center space-x-3 p-3 rounded-lg mb-2 transition-colors ${
-              activeSection === item.id ? 'bg-blue-600' : 'hover:bg-gray-700'
+              activeSection === item.id ? 'bg-slate-600' : 'hover:bg-slate-700'
             }`}
           >
             <item.icon className="w-5 h-5" />

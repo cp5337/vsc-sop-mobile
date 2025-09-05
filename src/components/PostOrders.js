@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+
 import { Search, MapPin, Clock, CheckCircle, ChevronRight } from 'lucide-react';
 import PostDetailModal from './PostDetailModal';
 

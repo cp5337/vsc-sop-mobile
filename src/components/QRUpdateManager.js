@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from 'react';
-import { QrCode, Download, Upload, Smartphone, Mail, MessageSquare, AlertCircle, CheckCircle, X } from 'lucide-react';
+import React, { useState } from 'react';
+import { QrCode, Upload, Smartphone, MessageSquare, X } from 'lucide-react';
 
 const QRUpdateManager = ({ onClose }) => {
   const [updateData, setUpdateData] = useState(null);
@@ -62,48 +62,48 @@ const QRUpdateManager = ({ onClose }) => {
   };
 
   // Process scanned QR code
-  const processScannedQR = (qrData) => {
-    try {
-      const update = JSON.parse(qrData);
-      
-      if (update.type === 'sop_update' && update.checksum) {
-        // Validate checksum
-        if (validateUpdate(update)) {
-          // Apply update
-          applyUpdate(update);
-          setMessage('✅ Update applied successfully!');
-        } else {
-          setMessage('❌ Invalid update - checksum mismatch');
-        }
-      } else {
-        setMessage('❌ Invalid QR code format');
-      }
-    } catch (error) {
-      setMessage('❌ Error processing QR code: ' + error.message);
-    }
-  };
+  // const processScannedQR = (qrData) => {
+  //   try {
+  //     const update = JSON.parse(qrData);
+  //     
+  //     if (update.type === 'sop_update' && update.checksum) {
+  //       // Validate checksum
+  //       if (validateUpdate(update)) {
+  //         // Apply update
+  //         applyUpdate(update);
+  //         setMessage('✅ Update applied successfully!');
+  //       } else {
+  //         setMessage('❌ Invalid update - checksum mismatch');
+  //       }
+  //     } else {
+  //       setMessage('❌ Invalid QR code format');
+  //     }
+  //   } catch (error) {
+  //     setMessage('❌ Error processing QR code: ' + error.message);
+  //   }
+  // };
 
   // Validate update integrity
-  const validateUpdate = (update) => {
-    // In production, implement proper checksum validation
-    return update.checksum && update.content;
-  };
+  // const validateUpdate = (update) => {
+  //   // In production, implement proper checksum validation
+  //   return update.checksum && update.content;
+  // };
 
   // Apply update to local storage
-  const applyUpdate = (update) => {
-    if (update.content.posts) {
-      localStorage.setItem('vsc_posts', JSON.stringify(update.content.posts));
-    }
-    if (update.content.contacts) {
-      localStorage.setItem('vsc_emergency_contacts', JSON.stringify(update.content.contacts));
-    }
-    if (update.content.codes) {
-      localStorage.setItem('vsc_emergency_codes', JSON.stringify(update.content.codes));
-    }
-    
-    // Reload app data
-    window.location.reload();
-  };
+  // const applyUpdate = (update) => {
+  //   if (update.content.posts) {
+  //     localStorage.setItem('vsc_posts', JSON.stringify(update.content.posts));
+  //   }
+  //   if (update.content.contacts) {
+  //     localStorage.setItem('vsc_emergency_contacts', JSON.stringify(update.content.contacts));
+  //   }
+  //   if (update.content.codes) {
+  //     localStorage.setItem('vsc_emergency_codes', JSON.stringify(update.content.codes));
+  //   }
+  //   
+  //   // Reload app data
+  //   window.location.reload();
+  // };
 
   // Native communication functions
   const sendSMS = (number, message) => {
@@ -111,10 +111,10 @@ const QRUpdateManager = ({ onClose }) => {
     window.open(smsUrl, '_blank');
   };
 
-  const sendEmail = (email, subject, body) => {
-    const emailUrl = `mailto:${email}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
-    window.open(emailUrl, '_blank');
-  };
+  // const sendEmail = (email, subject, body) => {
+  //   const emailUrl = `mailto:${email}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+  //   window.open(emailUrl, '_blank');
+  // };
 
   const makePhoneCall = (number) => {
     window.open(`tel:${number}`, '_blank');

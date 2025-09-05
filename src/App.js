@@ -33,6 +33,7 @@ import {
   StreamlinedCheckIn,
   LogViewer
 } from './components';
+import IncidentReport from './components/IncidentReport';
 
 // Data imports provide static configuration and emergency information
 import { posts, emergencyContacts, emergencyCodes } from './data/constants';
@@ -63,6 +64,7 @@ const App = () => {
   const [showTaskManager, setShowTaskManager] = useState(false);
   const [showTaskScanner, setShowTaskScanner] = useState(false);
   const [showTaskDashboard, setShowTaskDashboard] = useState(false);
+  const [showIncidentReport, setShowIncidentReport] = useState(false);
 
 
   // Effect hook loads acknowledged posts from local storage on component mount
@@ -86,9 +88,8 @@ const App = () => {
       case 'emergency':
         setActiveSection('emergency');
         break;
-      case 'radio':
-        // Radio check functionality would test communication systems
-        alert('Radio check functionality - would test communication systems');
+      case 'incident-report':
+        setShowIncidentReport(true);
         break;
       case 'checklist':
         setActiveSection('checklist');
@@ -170,13 +171,13 @@ const App = () => {
         case 'posts':
           return <PostOrders posts={posts} acknowledgedPosts={acknowledgedPosts} onAcknowledge={handleAcknowledge} />;
         case 'emergency':
-          return <Emergency emergencyCodes={emergencyCodes} />;
+          return <Emergency emergencyCodes={emergencyCodes} onBack={() => setActiveSection('overview')} />;
         case 'contacts':
-          return <Contacts contacts={emergencyContacts} />;
+          return <Contacts contacts={emergencyContacts} onBack={() => setActiveSection('overview')} />;
         case 'acknowledgment':
           return <Acknowledgment posts={posts} acknowledgedPosts={acknowledgedPosts} onAcknowledge={handleAcknowledge} />;
         case 'checklist':
-          return <DailyChecklist />;
+          return <DailyChecklist onBack={() => setActiveSection('overview')} />;
         default:
           return <Overview onQuickAction={handleQuickAction} />;
       }
@@ -301,6 +302,13 @@ const App = () => {
       {showTaskDashboard && (
         <TaskDashboard
           onClose={() => setShowTaskDashboard(false)}
+        />
+      )}
+
+      {/* Incident report modal provides incident documentation functionality for security personnel */}
+      {showIncidentReport && (
+        <IncidentReport
+          onClose={() => setShowIncidentReport(false)}
         />
       )}
     </div>

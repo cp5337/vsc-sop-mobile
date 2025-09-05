@@ -40,7 +40,7 @@ const ProfileAvatar = ({ profile, onClick, size = 'default', showName = false })
         return names[0][0].toUpperCase();
       }
     }
-    return 'U';
+    return '?';
   };
 
   // Get profile display name function returns formatted name for tooltip
@@ -74,10 +74,12 @@ const ProfileAvatar = ({ profile, onClick, size = 'default', showName = false })
             alt="User profile"
             className="w-full h-full object-cover"
           />
-        ) : (
+        ) : profile?.name ? (
           <span className={`${sizeConfig.text} font-semibold text-white`}>
             {getInitials()}
           </span>
+        ) : (
+          <User className={`${sizeConfig.icon} text-white`} />
         )}
       </button>
 

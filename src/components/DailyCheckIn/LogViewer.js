@@ -8,8 +8,8 @@
  */
 
 import React, { useState, useEffect } from 'react';
-import { Calendar, User, Hash, Download, Filter, Search } from 'lucide-react';
-import { validateLogEntry, getLogSummary } from '../../utils/hashUtils';
+import { Calendar, User, Hash, Download, Search, X, Clock } from 'lucide-react';
+// import { validateLogEntry, getLogSummary } from '../../utils/hashUtils';
 
 const LogViewer = ({ onClose }) => {
   // State management for log display and filtering

@@ -1,0 +1,5 @@
+cp5337@Mac vsc-sop-mobile % git init
+git add .
+git commit -m "Initial commit"
+git remote add origin cp5337
+git push -u origin main 

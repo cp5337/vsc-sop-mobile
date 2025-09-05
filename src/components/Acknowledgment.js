@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+
 import { CheckCircle, QrCode } from 'lucide-react';
 import QRModal from './QRModal';
 
