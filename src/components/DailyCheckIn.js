@@ -1,3 +1,11 @@
+/**
+ * Daily Check-In Component
+ * Written by: Charlie Payne @cp5337
+ * Date: 2025-01-27
+ * 
+ * Daily check-in component with QR code scanning and location-based check-ins
+ * Implements check-in tracking, QR code scanning, and localStorage persistence
+ */
 import React, { useState, useEffect } from 'react';
 import { QrCode, CheckCircle, Clock, MapPin, Calendar, RefreshCw, X } from 'lucide-react';
 
