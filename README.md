@@ -66,8 +66,22 @@ src/
 
 ## 📖 Documentation
 
-- **[Design & Roadmap](DESIGN_AND_ROADMAP.md)**: Comprehensive design documentation and future plans
-- **[Design Patterns Analysis](DESIGN_PATTERNS_ANALYSIS.md)**: Code architecture and patterns
+Comprehensive documentation is available in the `docs/` directory:
+
+### 🔍 [Technical Analysis](./docs/analysis/)
+- **[Design Patterns Analysis](./docs/analysis/DESIGN_PATTERNS_ANALYSIS.md)**: Code architecture and patterns
+- **[Duplicate Code Analysis](./docs/analysis/DUPLICATE_CODE_ANALYSIS.md)**: Code quality and duplication analysis
+- **[Refactoring Summary](./docs/analysis/REFACTORING_SUMMARY.md)**: Major refactoring efforts and improvements
+
+### 🏗️ [System Architecture](./docs/architecture/)
+- **[CTAS Adaptation Analysis](./docs/architecture/CTAS_CONVERGENT_ANALYSIS.md)**: Adaptation for Convergent Threat Analysis System
+- **[Field Intelligence Reuse Analysis](./docs/architecture/FIELD_INTELLIGENCE_REUSE_ANALYSIS.md)**: Adaptation for Field Intelligence Gathering
+
+### 🚀 [Development](./docs/development/)
+- **[Design & Roadmap](./docs/development/DESIGN_AND_ROADMAP.md)**: Comprehensive design documentation and future plans
+
+### 📚 [Documentation Overview](./docs/README.md)
+- Complete documentation index and navigation guide
 
 ## 🎯 Usage
 
