@@ -8,7 +8,7 @@
  */
 
 import { useState, useCallback } from 'react';
-import { useLocalStorage } from './useLocalStorage';
+import useLocalStorage from './useLocalStorage';
 
 const useCheckInLogs = () => {
   // Use existing useLocalStorage hook for consistency

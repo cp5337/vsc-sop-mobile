@@ -14,7 +14,7 @@ import { ProfileAvatar } from '../UserProfile';
 import { useUserProfile, useCheckInLogs } from '../../hooks';
 import { createCheckInLog, createAcknowledgmentLog, getLogSummary } from '../../utils/hashUtils';
 import { posts } from '../../data/constants';
-import { Modal } from '../Modal/Modal';
+import Modal from '../Modal/Modal';
 
 const StreamlinedCheckIn = ({ onClose }) => {
   // Use custom hooks for state management
