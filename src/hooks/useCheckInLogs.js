@@ -14,7 +14,6 @@ const useCheckInLogs = () => {
   // Use existing useLocalStorage hook for consistency
   const [checkInLogs, setCheckInLogs] = useLocalStorage('checkInLogs', []);
   const [acknowledgedPosts, setAcknowledgedPosts] = useLocalStorage('acknowledgedPosts', []);
-  const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(null);
 
   // Add check-in log function

@@ -9,21 +9,18 @@
 
 import React, { useState } from 'react';
 
-import { CheckCircle, FileText, Hash, X } from 'lucide-react';
+import { CheckCircle, FileText, Hash } from 'lucide-react';
 import { ProfileAvatar } from '../UserProfile';
 import { useUserProfile, useCheckInLogs } from '../../hooks';
-import { createCheckInLog, createAcknowledgmentLog, getLogSummary } from '../../utils/hashUtils';
 import { posts } from '../../data/constants';
 import Modal from '../Modal/Modal';
 
 const StreamlinedCheckIn = ({ onClose }) => {
   // Use custom hooks for state management
   const { profile: userProfile } = useUserProfile();
-  const { 
-    checkInLogs, 
-    acknowledgedPosts, 
-    addCheckInLog, 
-    acknowledgePost, 
+  const {
+    addCheckInLog,
+    acknowledgePost,
     isPostAcknowledged,
     getTodaysCheckIns,
     error,

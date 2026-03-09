@@ -7,14 +7,13 @@
  * Eliminates duplicate localStorage access patterns across TaskManager components
  */
 
-import { useState, useEffect, useCallback } from 'react';
+import { useState, useCallback } from 'react';
 import useLocalStorage from './useLocalStorage';
 
 const useTasks = () => {
   // Use existing useLocalStorage hook for consistency
   const [tasks, setTasks] = useLocalStorage('tasks', []);
   const [completionLogs, setCompletionLogs] = useLocalStorage('taskCompletionLogs', []);
-  const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(null);
 
   // Create new task function

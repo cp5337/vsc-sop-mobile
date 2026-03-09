@@ -7,8 +7,8 @@
  * 30% LOC will be implemented for further development
  */
 
-// React hooks provide state management and effect functionality for component lifecycle
-import { useState, useEffect } from 'react';
+// React hooks provide state management functionality for component lifecycle
+import { useState } from 'react';
 
 /**
  * Custom hook manages localStorage persistence with React state synchronization

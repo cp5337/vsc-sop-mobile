@@ -8,7 +8,7 @@
  */
 
 import React, { useState } from 'react';
-import { Plus, Edit, Trash2, QrCode, Calendar, User, CheckCircle, X, MapPin } from 'lucide-react';
+import { Plus, Edit, Trash2, Calendar, User, CheckCircle, X, MapPin } from 'lucide-react';
 import { useTasks, useModal } from '../../hooks';
 import Modal from '../Modal/Modal';
 
